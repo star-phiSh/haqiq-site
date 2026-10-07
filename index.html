@@ -37,38 +37,102 @@
         <span>Compliance reporting</span>
       </div>
 
-      <div class="product-preview" aria-label="Illustrative Haqiq admin dashboard">
+      <div class="product-preview demo-shell" aria-label="Interactive Haqiq product demo">
         <div class="preview-topbar">
           <div class="preview-brand">HAQIQ</div>
-          <div class="preview-org">Organization workspace</div>
-          <div class="avatar">NA</div>
+          <div class="preview-org">Acme Training · Admin workspace</div>
+          <div class="demo-live"><span></span> Interactive demo</div>
         </div>
+
         <div class="preview-body">
-          <aside class="preview-sidebar">
-            <span class="active">Overview</span>
-            <span>Courses</span>
-            <span>Users</span>
-            <span>Certificates</span>
-            <span>Reports</span>
+          <aside class="preview-sidebar demo-nav" aria-label="Demo navigation">
+            <button class="active" type="button" data-demo-tab="overview">Overview</button>
+            <button type="button" data-demo-tab="courses">Courses</button>
+            <button type="button" data-demo-tab="users">Users</button>
+            <button type="button" data-demo-tab="certificates">Certificates</button>
+            <button type="button" data-demo-tab="reports">Reports</button>
           </aside>
-          <div class="preview-content">
-            <div class="preview-heading">
-              <div>
-                <small>Compliance overview</small>
-                <strong>Training status</strong>
+
+          <div class="preview-content demo-content">
+            <section class="demo-panel active" data-demo-panel="overview">
+              <div class="preview-heading">
+                <div><small>Compliance overview</small><strong>Training status</strong></div>
+                <span class="status-pill">Live records</span>
               </div>
-              <span class="status-pill">Live records</span>
-            </div>
-            <div class="metric-grid">
-              <div class="metric"><span>Assigned</span><strong>248</strong><small>Across active courses</small></div>
-              <div class="metric"><span>Completed</span><strong>91%</strong><small>Current completion rate</small></div>
-              <div class="metric"><span>Certificates</span><strong>184</strong><small>Issued credentials</small></div>
-            </div>
-            <div class="activity-card">
-              <div class="activity-head"><strong>Course compliance</strong><span>Updated now</span></div>
-              <div class="course-row"><div><b>Workplace Safety</b><small>112 learners</small></div><div class="bar"><i style="width:94%"></i></div><strong>94%</strong></div>
-              <div class="course-row"><div><b>Information Security</b><small>86 learners</small></div><div class="bar"><i style="width:88%"></i></div><strong>88%</strong></div>
-              <div class="course-row"><div><b>Code of Conduct</b><small>50 learners</small></div><div class="bar"><i style="width:98%"></i></div><strong>98%</strong></div>
+              <div class="metric-grid">
+                <div class="metric"><span>Assigned</span><strong>248</strong><small>Across active courses</small></div>
+                <div class="metric"><span>Completed</span><strong>91%</strong><small>Current completion rate</small></div>
+                <div class="metric"><span>Certificates</span><strong>184</strong><small>Issued credentials</small></div>
+              </div>
+              <div class="activity-card">
+                <div class="activity-head"><strong>Course compliance</strong><span>Updated now</span></div>
+                <div class="course-row"><div><b>Workplace Safety</b><small>112 learners</small></div><div class="bar"><i style="width:94%"></i></div><strong>94%</strong></div>
+                <div class="course-row"><div><b>Information Security</b><small>86 learners</small></div><div class="bar"><i style="width:88%"></i></div><strong>88%</strong></div>
+                <div class="course-row"><div><b>Code of Conduct</b><small>50 learners</small></div><div class="bar"><i style="width:98%"></i></div><strong>98%</strong></div>
+              </div>
+            </section>
+
+            <section class="demo-panel" data-demo-panel="courses">
+              <div class="preview-heading">
+                <div><small>Course management</small><strong>Courses</strong></div>
+                <button class="demo-action" type="button" data-demo-message="Course creation is available to tenant administrators.">+ New course</button>
+              </div>
+              <div class="demo-table">
+                <div class="demo-table-head"><span>Course</span><span>Status</span><span>Completion</span><span></span></div>
+                <div class="demo-table-row"><span><b>Information Security</b><small>Version 2.1 · 86 learners</small></span><span class="mini-badge green">Published</span><span>88%</span><button type="button" data-demo-message="Information Security · 8 lessons · Final assessment · 80% passing score">Open</button></div>
+                <div class="demo-table-row"><span><b>Workplace Safety</b><small>Version 1.4 · 112 learners</small></span><span class="mini-badge green">Published</span><span>94%</span><button type="button" data-demo-message="Workplace Safety · 6 lessons · Certificate enabled">Open</button></div>
+                <div class="demo-table-row"><span><b>Data Privacy</b><small>Draft · not assigned</small></span><span class="mini-badge">Draft</span><span>—</span><button type="button" data-demo-message="Data Privacy is still in draft and can be edited before publishing.">Edit</button></div>
+              </div>
+            </section>
+
+            <section class="demo-panel" data-demo-panel="users">
+              <div class="preview-heading">
+                <div><small>People</small><strong>Users</strong></div>
+                <button class="demo-action" type="button" data-demo-message="Admins can invite or add employees and assign them to training.">+ Add user</button>
+              </div>
+              <div class="demo-table">
+                <div class="demo-table-head"><span>Employee</span><span>Department</span><span>Status</span><span></span></div>
+                <div class="demo-table-row"><span><b>Sarah Malik</b><small>sarah@acme.example</small></span><span>Operations</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Sarah Malik · 4 assigned courses · 4 completed · 4 certificates">View</button></div>
+                <div class="demo-table-row"><span><b>Omar Hassan</b><small>omar@acme.example</small></span><span>Finance</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Omar Hassan · 3 assigned courses · 2 completed · 1 in progress">View</button></div>
+                <div class="demo-table-row"><span><b>Lina George</b><small>lina@acme.example</small></span><span>HR</span><span class="mini-badge amber">Pending</span><button type="button" data-demo-message="Lina George has been invited and has not yet activated her account.">View</button></div>
+              </div>
+            </section>
+
+            <section class="demo-panel" data-demo-panel="certificates">
+              <div class="preview-heading">
+                <div><small>Credentials</small><strong>Certificates</strong></div>
+                <span class="status-pill">184 issued</span>
+              </div>
+              <div class="demo-table">
+                <div class="demo-table-head"><span>Employee</span><span>Course</span><span>Status</span><span></span></div>
+                <div class="demo-table-row"><span><b>Sarah Malik</b><small>HQ-26-0184</small></span><span>Information Security</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0184 · Score 94% · Valid credential">View</button></div>
+                <div class="demo-table-row"><span><b>Omar Hassan</b><small>HQ-26-0172</small></span><span>Workplace Safety</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0172 · Score 88% · Valid credential">View</button></div>
+                <div class="demo-table-row"><span><b>Maya Chen</b><small>HQ-26-0149</small></span><span>Code of Conduct</span><span class="mini-badge">Expired</span><button type="button" data-demo-message="Certificate HQ-26-0149 has expired and can be reassigned for renewal.">View</button></div>
+              </div>
+            </section>
+
+            <section class="demo-panel" data-demo-panel="reports">
+              <div class="preview-heading">
+                <div><small>Reporting</small><strong>Compliance report</strong></div>
+                <div class="demo-segment" aria-label="Report views">
+                  <button class="active" type="button" data-report="compliance">Compliance</button>
+                  <button type="button" data-report="attempts">Attempts</button>
+                  <button type="button" data-report="audit">Audit</button>
+                </div>
+              </div>
+              <div class="report-card">
+                <div class="report-number" id="demo-report-number">91%</div>
+                <div><strong id="demo-report-title">Overall completion</strong><p id="demo-report-copy">226 of 248 assigned training records are complete.</p></div>
+              </div>
+              <div class="report-bars">
+                <div><span>Operations</span><div class="bar"><i style="width:96%"></i></div><b>96%</b></div>
+                <div><span>Finance</span><div class="bar"><i style="width:89%"></i></div><b>89%</b></div>
+                <div><span>Human Resources</span><div class="bar"><i style="width:93%"></i></div><b>93%</b></div>
+              </div>
+            </section>
+
+            <div class="demo-feedback" id="demo-feedback" role="status" aria-live="polite">
+              <span>Tip</span> Use the menu on the left to explore Haqiq.
             </div>
           </div>
         </div>
@@ -146,5 +210,6 @@
       <div class="copyright">© 2026 Haqiq</div>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
