@@ -1,5 +1,7 @@
 (() => {
   const staticAr = {
+    'Tenant Admin':'مسؤول المنشأة',
+    'Learner':'المتعلم',
     'Product':'المنتج',
     'How it works':'كيف يعمل',
     'For teams':'للفرق',
@@ -51,6 +53,34 @@
     'Explore the application before you sign in.':'استكشف التطبيق قبل تسجيل الدخول.',
     'Click around the product tour. It is a safe demo — no real customer data and no connection to your live tenant.':'تجوّل داخل العرض التفاعلي للمنتج. هذه نسخة آمنة لا تحتوي على بيانات عملاء حقيقية ولا تتصل ببيئة عمل حية.',
     'Acme Training · Admin workspace':'شركة أكمي · مساحة المسؤول',
+    'Acme Training · Learner workspace':'شركة أكمي · مساحة المتعلم',
+    'Learner workspace':'مساحة المتعلم',
+    'My Learning':'تعلّمي',
+    '4 assigned':'4 معيّنة',
+    'Required training':'التدريب المطلوب',
+    'In progress':'قيد التقدم',
+    'Continue where you left off':'تابع من حيث توقفت',
+    'Training completed':'التدريب المكتمل',
+    'Compliance training':'تدريب الامتثال',
+    'Continue your assigned course and resume from your latest saved position.':'تابع دورتك المعيّنة واستأنف من آخر موضع محفوظ.',
+    'Continue learning':'متابعة التعلّم',
+    'Health & safety':'الصحة والسلامة',
+    'Completed successfully. Your certificate is available.':'اكتمل بنجاح. شهادتك متاحة.',
+    'View certificate':'عرض الشهادة',
+    'Company policy':'سياسة الشركة',
+    'Assessment passed and completion recorded.':'تم اجتياز التقييم وتسجيل الإكمال.',
+    'Review':'مراجعة',
+    'Select a course to see how the learner continues training.':'اختر دورة لترى كيف يواصل المتعلم التدريب.',
+    'My Certificates':'شهاداتي',
+    '3 earned':'3 مكتسبة',
+    'Certificate':'شهادة',
+    'Issued after successful completion':'صدرت بعد الإكمال الناجح',
+    'Valid learner credential':'شهادة متعلم سارية',
+    'Data Privacy Basics':'أساسيات خصوصية البيانات',
+    'Account':'الحساب',
+    'Profile':'الملف الشخصي',
+    'Change password':'تغيير كلمة المرور',
+    'Account details':'تفاصيل الحساب',
     'Interactive demo':'عرض تفاعلي',
     'Overview':'نظرة عامة',
     'Courses':'الدورات',
@@ -286,6 +316,28 @@
     }
   }));
   applyLanguage(currentLang,false);
+
+  const productViewButtons=[...document.querySelectorAll('[data-product-view-tab]')];
+  const productViewPanels=[...document.querySelectorAll('[data-product-view-panel]')];
+  productViewButtons.forEach((button)=>button.addEventListener('click',()=>{
+    const view=button.dataset.productViewTab;
+    productViewButtons.forEach((b)=>{const on=b===button;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+    productViewPanels.forEach((panel)=>panel.classList.toggle('active',panel.dataset.productViewPanel===view));
+  }));
+
+  const learnerNavButtons=[...document.querySelectorAll('[data-learner-tab]')];
+  const learnerPanels=[...document.querySelectorAll('[data-learner-panel]')];
+  learnerNavButtons.forEach((button)=>button.addEventListener('click',()=>{
+    const tab=button.dataset.learnerTab;
+    learnerNavButtons.forEach((b)=>b.classList.toggle('active',b===button));
+    learnerPanels.forEach((panel)=>panel.classList.toggle('active',panel.dataset.learnerPanel===tab));
+  }));
+  const learnerFeedback=document.getElementById('learner-demo-feedback');
+  document.querySelectorAll('[data-learner-message]').forEach((button)=>button.addEventListener('click',()=>{
+    if(learnerFeedback) learnerFeedback.innerHTML=currentLang==='ar'
+      ? '<span>عرض</span> هذه وظيفة متعلم تجريبية ضمن حقيق.'
+      : '<span>Demo</span> '+button.dataset.learnerMessage;
+  }));
 
   const navButtons=[...document.querySelectorAll('[data-demo-tab]')];
   const panels=[...document.querySelectorAll('[data-demo-panel]')];

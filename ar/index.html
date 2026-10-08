@@ -121,7 +121,13 @@
           <p>Click around the product tour. It is a safe demo — no real customer data and no connection to your live tenant.</p>
         </div>
 
-        <div class="product-preview demo-shell" aria-label="Interactive Haqiq product demo">
+        <div class="product-view-tabs" role="tablist" aria-label="Product view">
+          <button class="active" type="button" role="tab" aria-selected="true" data-product-view-tab="admin">Tenant Admin</button>
+          <button type="button" role="tab" aria-selected="false" data-product-view-tab="learner">Learner</button>
+        </div>
+
+        <div class="product-view-panel active" data-product-view-panel="admin">
+        <div class="product-preview demo-shell" aria-label="Interactive Haqiq tenant admin demo">
           <div class="preview-topbar">
             <div class="preview-brand"><img src="../assets/haqiq-mark.webp" alt="" aria-hidden="true" /><span data-brand-text>Haqiq</span></div>
             <div class="preview-org">Acme Training · Admin workspace</div>
@@ -217,6 +223,99 @@
 
               <div class="demo-feedback" id="demo-feedback" role="status" aria-live="polite">
                 <span>Tip</span> Use the menu on the left to explore Haqiq.
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="product-view-panel" data-product-view-panel="learner">
+          <div class="product-preview learner-demo-shell" aria-label="Interactive Haqiq learner demo">
+            <div class="preview-topbar">
+              <div class="preview-brand"><img src="../assets/haqiq-mark.webp" alt="" aria-hidden="true" /><span data-brand-text>Haqiq</span></div>
+              <div class="preview-org">Acme Training · Learner workspace</div>
+              <div class="learner-user"><span class="learner-avatar">SM</span><div><strong>Sarah Malik</strong><small>Learner</small></div></div>
+            </div>
+
+            <div class="preview-body learner-preview-body">
+              <aside class="preview-sidebar demo-nav learner-nav" aria-label="Learner demo navigation">
+                <button class="active" type="button" data-learner-tab="learning">My Learning</button>
+                <button type="button" data-learner-tab="certificates">My Certificates</button>
+                <button type="button" data-learner-tab="profile">Profile</button>
+              </aside>
+
+              <div class="preview-content learner-content">
+                <section class="learner-panel active" data-learner-panel="learning">
+                  <div class="preview-heading">
+                    <div><small>Learner workspace</small><strong>My Learning</strong></div>
+                    <span class="status-pill">4 assigned</span>
+                  </div>
+
+                  <div class="learner-summary">
+                    <div class="metric"><span>Assigned</span><strong>4</strong><small>Required training</small></div>
+                    <div class="metric"><span>In progress</span><strong>1</strong><small>Continue where you left off</small></div>
+                    <div class="metric"><span>Completed</span><strong>3</strong><small>Training completed</small></div>
+                  </div>
+
+                  <div class="learner-course-list">
+                    <article class="learner-course featured">
+                      <div class="course-state">In progress</div>
+                      <div class="learner-course-main">
+                        <div><small>Compliance training</small><h3>Information Security</h3><p>Continue your assigned course and resume from your latest saved position.</p></div>
+                        <button type="button" data-learner-message="Information Security opens at your latest saved lesson position.">Continue learning</button>
+                      </div>
+                      <div class="learner-progress"><span><i style="width:65%"></i></span><b>65%</b></div>
+                    </article>
+
+                    <article class="learner-course">
+                      <div class="course-state complete">Completed</div>
+                      <div class="learner-course-main">
+                        <div><small>Health & safety</small><h3>Workplace Safety</h3><p>Completed successfully. Your certificate is available.</p></div>
+                        <button type="button" data-learner-message="Your Workplace Safety certificate is ready to view.">View certificate</button>
+                      </div>
+                      <div class="learner-progress"><span><i style="width:100%"></i></span><b>100%</b></div>
+                    </article>
+
+                    <article class="learner-course">
+                      <div class="course-state complete">Completed</div>
+                      <div class="learner-course-main">
+                        <div><small>Company policy</small><h3>Code of Conduct</h3><p>Assessment passed and completion recorded.</p></div>
+                        <button type="button" data-learner-message="Code of Conduct is complete with a recorded passing assessment.">Review</button>
+                      </div>
+                      <div class="learner-progress"><span><i style="width:100%"></i></span><b>100%</b></div>
+                    </article>
+                  </div>
+
+                  <div class="demo-feedback learner-feedback" id="learner-demo-feedback" role="status" aria-live="polite">
+                    <span>Tip</span> Select a course to see how the learner continues training.
+                  </div>
+                </section>
+
+                <section class="learner-panel" data-learner-panel="certificates">
+                  <div class="preview-heading">
+                    <div><small>Credentials</small><strong>My Certificates</strong></div>
+                    <span class="status-pill">3 earned</span>
+                  </div>
+                  <div class="certificate-grid">
+                    <article><img src="../assets/haqiq-mark.webp" alt="" /><div><small>Certificate</small><strong>Workplace Safety</strong><p>Issued after successful completion</p></div><button type="button" data-learner-message="Certificate HQ-26-0184 is valid and ready to view.">View</button></article>
+                    <article><img src="../assets/haqiq-mark.webp" alt="" /><div><small>Certificate</small><strong>Code of Conduct</strong><p>Valid learner credential</p></div><button type="button" data-learner-message="Certificate HQ-26-0172 is valid and ready to view.">View</button></article>
+                    <article><img src="../assets/haqiq-mark.webp" alt="" /><div><small>Certificate</small><strong>Data Privacy Basics</strong><p>Valid learner credential</p></div><button type="button" data-learner-message="Certificate HQ-26-0149 is valid and ready to view.">View</button></article>
+                  </div>
+                </section>
+
+                <section class="learner-panel" data-learner-panel="profile">
+                  <div class="preview-heading">
+                    <div><small>Account</small><strong>Profile</strong></div>
+                  </div>
+                  <div class="learner-profile-card">
+                    <span class="learner-avatar large">SM</span>
+                    <div><strong>Sarah Malik</strong><p>sarah@acme.example</p><small>Operations · Learner</small></div>
+                  </div>
+                  <div class="profile-actions">
+                    <button type="button" data-learner-message="Learners can update their password securely from their account.">Change password</button>
+                    <button type="button" data-learner-message="Profile details are managed within the learner account.">Account details</button>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
