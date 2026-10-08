@@ -6,22 +6,33 @@
   <meta name="description" content="Haqiq is a learning and compliance platform for creating training, assessing knowledge, issuing certificates, and keeping clear compliance records." />
   <title>Haqiq — Compliance training that proves itself</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/webp" href="assets/haqiq-mark.webp" />
   <script>
     (() => {
       const saved = localStorage.getItem('haqiq-theme');
       const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.dataset.theme = saved || preferred;
+      const savedLang = localStorage.getItem('haqiq-lang') || 'en';
+      document.documentElement.dataset.lang = savedLang;
+      document.documentElement.lang = savedLang;
+      document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
     })();
   </script>
 </head>
 <body class="home">
   <header class="site-header">
-    <a class="wordmark" href="./" aria-label="Haqiq home">HAQIQ</a>
+    <a class="brand-lockup" href="./" aria-label="Haqiq home">
+      <img class="brand-logo lang-logo" src="assets/haqiq-logo-en.webp" data-logo-en="assets/haqiq-logo-en.webp" data-logo-ar="assets/haqiq-logo-ar.webp" alt="Haqiq" />
+    </a>
     <nav class="nav" aria-label="Primary navigation">
       <a href="#product">Product</a>
       <a href="#loop">How it works</a>
       <a href="#roles">For teams</a>
       <a href="./support/">Support</a>
+      <div class="language-switcher" aria-label="Language">
+        <button class="lang-button" type="button" data-lang="en" aria-label="English"><span class="flag" aria-hidden="true">🇺🇸</span><b>EN</b></button>
+        <button class="lang-button" type="button" data-lang="ar" aria-label="العربية"><span class="flag" aria-hidden="true">🇸🇦</span><b>العربية</b></button>
+      </div>
       <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button>
       <button class="nav-cta" type="button" data-trial-open>Start free trial</button>
     </nav>
@@ -83,7 +94,7 @@
       <div class="compliance-loop" aria-label="Create, Assign, Learn, Assess, Certify, Report">
         <div class="loop-ring"></div>
         <div class="loop-center">
-          <span>HAQIQ</span>
+          <span class="loop-logo-wrap"><img src="assets/haqiq-mark.webp" alt="" aria-hidden="true" /></span>
           <strong>Proof</strong>
           <small>One continuous record</small>
         </div>
@@ -108,7 +119,7 @@
 
         <div class="product-preview demo-shell" aria-label="Interactive Haqiq product demo">
           <div class="preview-topbar">
-            <div class="preview-brand">HAQIQ</div>
+            <div class="preview-brand"><img src="assets/haqiq-mark.webp" alt="" aria-hidden="true" /><span data-brand-text>Haqiq</span></div>
             <div class="preview-org">Acme Training · Admin workspace</div>
             <div class="demo-live"><span></span> Interactive demo</div>
           </div>
@@ -278,7 +289,7 @@
   <footer class="site-footer">
     <div class="footer-inner shell">
       <div>
-        <div class="wordmark footer-mark">HAQIQ</div>
+        <a class="footer-brand" href="./" aria-label="Haqiq home"><img class="footer-logo lang-logo" src="assets/haqiq-logo-en.webp" data-logo-en="assets/haqiq-logo-en.webp" data-logo-ar="assets/haqiq-logo-ar.webp" alt="Haqiq" /></a>
         <p>Compliance training that proves itself.</p>
       </div>
       <div class="footer-links">
@@ -293,6 +304,7 @@
   <dialog class="trial-dialog" id="trial-dialog">
     <form class="trial-card" id="trial-form">
       <button class="trial-close" type="button" data-trial-close aria-label="Close trial request">×</button>
+      <img class="trial-logo lang-logo" src="assets/haqiq-logo-en.webp" data-logo-en="assets/haqiq-logo-en.webp" data-logo-ar="assets/haqiq-logo-ar.webp" alt="Haqiq" />
       <p class="kicker">7-day free trial</p>
       <h2>Request your Haqiq workspace.</h2>
       <p class="trial-intro">Tell us who you are. During the MVP, each request is reviewed before a workspace is activated.</p>

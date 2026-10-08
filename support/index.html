@@ -5,17 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haqiq Support</title>
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/webp" href="../assets/haqiq-mark.webp" />
   <script>
     (() => {
       const saved = localStorage.getItem('haqiq-theme');
       const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.dataset.theme = saved || preferred;
+      const savedLang = localStorage.getItem('haqiq-lang') || 'en';
+      document.documentElement.dataset.lang = savedLang;
+      document.documentElement.lang = savedLang;
+      document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
     })();
   </script>
 </head>
 <body>
   <main class="container">
-    <div class="page-topline"><div class="brand">HAQIQ</div><button class="theme-toggle page-theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button></div>
+    <div class="page-topline">
+      <a class="brand-lockup" href="../" aria-label="Haqiq home"><img class="brand-logo lang-logo" src="../assets/haqiq-logo-en.webp" data-logo-en="../assets/haqiq-logo-en.webp" data-logo-ar="../assets/haqiq-logo-ar.webp" alt="Haqiq" /></a>
+      <div class="page-controls">
+        <div class="language-switcher" aria-label="Language">
+          <button class="lang-button" type="button" data-lang="en" aria-label="English"><span class="flag" aria-hidden="true">🇺🇸</span><b>EN</b></button>
+          <button class="lang-button" type="button" data-lang="ar" aria-label="العربية"><span class="flag" aria-hidden="true">🇸🇦</span><b>العربية</b></button>
+        </div>
+        <button class="theme-toggle page-theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button>
+      </div>
+    </div>
     <h1>Support</h1>
     <p class="lead">Need help using Haqiq? We can assist with account access, assigned courses, assessments, certificates, and other application questions.</p>
 
