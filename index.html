@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Haqiq is a focused learning and compliance platform for assigning training, assessing knowledge, issuing certificates, and tracking completion." />
-  <title>Haqiq — Learning & Compliance</title>
+  <meta name="description" content="Haqiq is a learning and compliance platform for creating training, assessing knowledge, issuing certificates, and keeping clear compliance records." />
+  <title>Haqiq — Compliance training that proves itself</title>
   <link rel="stylesheet" href="styles.css" />
   <script>
     (() => {
@@ -18,189 +18,260 @@
   <header class="site-header">
     <a class="wordmark" href="./" aria-label="Haqiq home">HAQIQ</a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="#platform">Platform</a>
-      <a href="#workflow">How it works</a>
+      <a href="#product">Product</a>
+      <a href="#loop">How it works</a>
+      <a href="#roles">For teams</a>
       <a href="./support/">Support</a>
       <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button>
-      <a class="nav-cta" href="mailto:hello@haqiq.app?subject=Haqiq%20MVP%20Access">Request access</a>
+      <button class="nav-cta" type="button" data-trial-open>Start free trial</button>
     </nav>
   </header>
 
   <main>
     <section class="hero shell">
-      <div class="eyebrow"><span class="dot"></span> Learning & compliance, in one place</div>
-      <h1>Train your team.<br /><span>Prove completion.</span></h1>
-      <p class="hero-copy">
-        Haqiq gives organizations one focused workspace to create training, assign employees,
-        assess knowledge, issue certificates, and keep a clear compliance record.
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="mailto:hello@haqiq.app?subject=Haqiq%20MVP%20Access">Request MVP access</a>
-        <a class="button secondary" href="#platform">Explore the platform</a>
-      </div>
-      <div class="hero-meta">
-        <span>Unlimited learners</span>
-        <span>Structured assessments</span>
-        <span>Verifiable certificates</span>
-        <span>Compliance reporting</span>
-      </div>
-
-      <div class="product-preview demo-shell" aria-label="Interactive Haqiq product demo">
-        <div class="preview-topbar">
-          <div class="preview-brand">HAQIQ</div>
-          <div class="preview-org">Acme Training · Admin workspace</div>
-          <div class="demo-live"><span></span> Interactive demo</div>
+      <div class="hero-grid">
+        <div class="hero-copy-wrap">
+          <div class="eyebrow"><span class="dot"></span> Learning & compliance, without the clutter</div>
+          <h1>Compliance training that <em>proves itself.</em></h1>
+          <p class="hero-copy">
+            Build training. Assign your people. Measure understanding. Issue certificates.
+            Keep the evidence in one clear, auditable workspace.
+          </p>
+          <div class="hero-actions">
+            <button class="button primary" type="button" data-trial-open>Start your 7-day trial</button>
+            <a class="button secondary" href="#product">Take the product tour</a>
+          </div>
+          <div class="hero-notes">
+            <span>No card required</span>
+            <span>Unlimited learners</span>
+            <span>Manual approval during MVP</span>
+          </div>
         </div>
 
-        <div class="preview-body">
-          <aside class="preview-sidebar demo-nav" aria-label="Demo navigation">
-            <button class="active" type="button" data-demo-tab="overview">Overview</button>
-            <button type="button" data-demo-tab="courses">Courses</button>
-            <button type="button" data-demo-tab="users">Users</button>
-            <button type="button" data-demo-tab="certificates">Certificates</button>
-            <button type="button" data-demo-tab="reports">Reports</button>
-          </aside>
+        <div class="hero-proof-card" aria-label="Haqiq compliance journey">
+          <div class="proof-card-top">
+            <span class="proof-label">One continuous record</span>
+            <span class="proof-live"><i></i> Ready for review</span>
+          </div>
+          <div class="proof-stack">
+            <div class="proof-item"><span>01</span><div><strong>Assigned</strong><small>Training is issued to the right people</small></div><b>248</b></div>
+            <div class="proof-item"><span>02</span><div><strong>Completed</strong><small>Progress and learning activity are recorded</small></div><b>91%</b></div>
+            <div class="proof-item"><span>03</span><div><strong>Assessed</strong><small>Knowledge is checked against a passing score</small></div><b>94%</b></div>
+            <div class="proof-item"><span>04</span><div><strong>Certified</strong><small>Eligible completions become traceable credentials</small></div><b>184</b></div>
+          </div>
+          <div class="proof-footer">
+            <span>From learning activity to compliance evidence</span>
+            <span class="proof-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="preview-content demo-content">
-            <section class="demo-panel active" data-demo-panel="overview">
-              <div class="preview-heading">
-                <div><small>Compliance overview</small><strong>Training status</strong></div>
-                <span class="status-pill">Live records</span>
-              </div>
-              <div class="metric-grid">
-                <div class="metric"><span>Assigned</span><strong>248</strong><small>Across active courses</small></div>
-                <div class="metric"><span>Completed</span><strong>91%</strong><small>Current completion rate</small></div>
-                <div class="metric"><span>Certificates</span><strong>184</strong><small>Issued credentials</small></div>
-              </div>
-              <div class="activity-card">
-                <div class="activity-head"><strong>Course compliance</strong><span>Updated now</span></div>
-                <div class="course-row"><div><b>Workplace Safety</b><small>112 learners</small></div><div class="bar"><i style="width:94%"></i></div><strong>94%</strong></div>
-                <div class="course-row"><div><b>Information Security</b><small>86 learners</small></div><div class="bar"><i style="width:88%"></i></div><strong>88%</strong></div>
-                <div class="course-row"><div><b>Code of Conduct</b><small>50 learners</small></div><div class="bar"><i style="width:98%"></i></div><strong>98%</strong></div>
-              </div>
-            </section>
+    <section class="signal-strip">
+      <div class="shell signal-inner">
+        <span>CREATE</span><i>→</i><span>ASSIGN</span><i>→</i><span>LEARN</span><i>→</i><span>ASSESS</span><i>→</i><span>CERTIFY</span><i>→</i><span>REPORT</span>
+      </div>
+    </section>
 
-            <section class="demo-panel" data-demo-panel="courses">
-              <div class="preview-heading">
-                <div><small>Course management</small><strong>Courses</strong></div>
-                <button class="demo-action" type="button" data-demo-message="Course creation is available to tenant administrators.">+ New course</button>
-              </div>
-              <div class="demo-table">
-                <div class="demo-table-head"><span>Course</span><span>Status</span><span>Completion</span><span></span></div>
-                <div class="demo-table-row"><span><b>Information Security</b><small>Version 2.1 · 86 learners</small></span><span class="mini-badge green">Published</span><span>88%</span><button type="button" data-demo-message="Information Security · 8 lessons · Final assessment · 80% passing score">Open</button></div>
-                <div class="demo-table-row"><span><b>Workplace Safety</b><small>Version 1.4 · 112 learners</small></span><span class="mini-badge green">Published</span><span>94%</span><button type="button" data-demo-message="Workplace Safety · 6 lessons · Certificate enabled">Open</button></div>
-                <div class="demo-table-row"><span><b>Data Privacy</b><small>Draft · not assigned</small></span><span class="mini-badge">Draft</span><span>—</span><button type="button" data-demo-message="Data Privacy is still in draft and can be edited before publishing.">Edit</button></div>
-              </div>
-            </section>
+    <section class="section shell" id="loop">
+      <div class="section-intro centered">
+        <p class="kicker">The Haqiq compliance loop</p>
+        <h2>Every step leaves evidence behind.</h2>
+        <p>Haqiq connects the full training lifecycle so completion is not just a checkbox — it becomes a usable compliance record.</p>
+      </div>
 
-            <section class="demo-panel" data-demo-panel="users">
-              <div class="preview-heading">
-                <div><small>People</small><strong>Users</strong></div>
-                <button class="demo-action" type="button" data-demo-message="Admins can invite or add employees and assign them to training.">+ Add user</button>
-              </div>
-              <div class="demo-table">
-                <div class="demo-table-head"><span>Employee</span><span>Department</span><span>Status</span><span></span></div>
-                <div class="demo-table-row"><span><b>Sarah Malik</b><small>sarah@acme.example</small></span><span>Operations</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Sarah Malik · 4 assigned courses · 4 completed · 4 certificates">View</button></div>
-                <div class="demo-table-row"><span><b>Omar Hassan</b><small>omar@acme.example</small></span><span>Finance</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Omar Hassan · 3 assigned courses · 2 completed · 1 in progress">View</button></div>
-                <div class="demo-table-row"><span><b>Lina George</b><small>lina@acme.example</small></span><span>HR</span><span class="mini-badge amber">Pending</span><button type="button" data-demo-message="Lina George has been invited and has not yet activated her account.">View</button></div>
-              </div>
-            </section>
+      <div class="compliance-loop" aria-label="Create, Assign, Learn, Assess, Certify, Report">
+        <div class="loop-ring"></div>
+        <div class="loop-center">
+          <span>HAQIQ</span>
+          <strong>Proof</strong>
+          <small>One continuous record</small>
+        </div>
+        <article class="loop-node node-1"><span>01</span><strong>Create</strong><small>Build structured training</small></article>
+        <article class="loop-node node-2"><span>02</span><strong>Assign</strong><small>Give access to the right people</small></article>
+        <article class="loop-node node-3"><span>03</span><strong>Learn</strong><small>Record progress and activity</small></article>
+        <article class="loop-node node-4"><span>04</span><strong>Assess</strong><small>Verify understanding</small></article>
+        <article class="loop-node node-5"><span>05</span><strong>Certify</strong><small>Issue traceable credentials</small></article>
+        <article class="loop-node node-6"><span>06</span><strong>Report</strong><small>Surface compliance evidence</small></article>
+      </div>
+    </section>
 
-            <section class="demo-panel" data-demo-panel="certificates">
-              <div class="preview-heading">
-                <div><small>Credentials</small><strong>Certificates</strong></div>
-                <span class="status-pill">184 issued</span>
-              </div>
-              <div class="demo-table">
-                <div class="demo-table-head"><span>Employee</span><span>Course</span><span>Status</span><span></span></div>
-                <div class="demo-table-row"><span><b>Sarah Malik</b><small>HQ-26-0184</small></span><span>Information Security</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0184 · Score 94% · Valid credential">View</button></div>
-                <div class="demo-table-row"><span><b>Omar Hassan</b><small>HQ-26-0172</small></span><span>Workplace Safety</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0172 · Score 88% · Valid credential">View</button></div>
-                <div class="demo-table-row"><span><b>Maya Chen</b><small>HQ-26-0149</small></span><span>Code of Conduct</span><span class="mini-badge">Expired</span><button type="button" data-demo-message="Certificate HQ-26-0149 has expired and can be reassigned for renewal.">View</button></div>
-              </div>
-            </section>
+    <section class="section product-section" id="product">
+      <div class="shell">
+        <div class="section-intro product-intro">
+          <div>
+            <p class="kicker">See Haqiq in action</p>
+            <h2>Explore the application before you sign in.</h2>
+          </div>
+          <p>Click around the product tour. It is a safe demo — no real customer data and no connection to your live tenant.</p>
+        </div>
 
-            <section class="demo-panel" data-demo-panel="reports">
-              <div class="preview-heading">
-                <div><small>Reporting</small><strong>Compliance report</strong></div>
-                <div class="demo-segment" aria-label="Report views">
-                  <button class="active" type="button" data-report="compliance">Compliance</button>
-                  <button type="button" data-report="attempts">Attempts</button>
-                  <button type="button" data-report="audit">Audit</button>
+        <div class="product-preview demo-shell" aria-label="Interactive Haqiq product demo">
+          <div class="preview-topbar">
+            <div class="preview-brand">HAQIQ</div>
+            <div class="preview-org">Acme Training · Admin workspace</div>
+            <div class="demo-live"><span></span> Interactive demo</div>
+          </div>
+
+          <div class="preview-body">
+            <aside class="preview-sidebar demo-nav" aria-label="Demo navigation">
+              <button class="active" type="button" data-demo-tab="overview">Overview</button>
+              <button type="button" data-demo-tab="courses">Courses</button>
+              <button type="button" data-demo-tab="users">Users</button>
+              <button type="button" data-demo-tab="certificates">Certificates</button>
+              <button type="button" data-demo-tab="reports">Reports</button>
+            </aside>
+
+            <div class="preview-content demo-content">
+              <section class="demo-panel active" data-demo-panel="overview">
+                <div class="preview-heading">
+                  <div><small>Compliance overview</small><strong>Training status</strong></div>
+                  <span class="status-pill">Live records</span>
                 </div>
-              </div>
-              <div class="report-card">
-                <div class="report-number" id="demo-report-number">91%</div>
-                <div><strong id="demo-report-title">Overall completion</strong><p id="demo-report-copy">226 of 248 assigned training records are complete.</p></div>
-              </div>
-              <div class="report-bars">
-                <div><span>Operations</span><div class="bar"><i style="width:96%"></i></div><b>96%</b></div>
-                <div><span>Finance</span><div class="bar"><i style="width:89%"></i></div><b>89%</b></div>
-                <div><span>Human Resources</span><div class="bar"><i style="width:93%"></i></div><b>93%</b></div>
-              </div>
-            </section>
+                <div class="metric-grid">
+                  <div class="metric"><span>Assigned</span><strong>248</strong><small>Across active courses</small></div>
+                  <div class="metric"><span>Completed</span><strong>91%</strong><small>Current completion rate</small></div>
+                  <div class="metric"><span>Certificates</span><strong>184</strong><small>Issued credentials</small></div>
+                </div>
+                <div class="activity-card">
+                  <div class="activity-head"><strong>Course compliance</strong><span>Updated now</span></div>
+                  <div class="course-row"><div><b>Workplace Safety</b><small>112 learners</small></div><div class="bar"><i style="width:94%"></i></div><strong>94%</strong></div>
+                  <div class="course-row"><div><b>Information Security</b><small>86 learners</small></div><div class="bar"><i style="width:88%"></i></div><strong>88%</strong></div>
+                  <div class="course-row"><div><b>Code of Conduct</b><small>50 learners</small></div><div class="bar"><i style="width:98%"></i></div><strong>98%</strong></div>
+                </div>
+              </section>
 
-            <div class="demo-feedback" id="demo-feedback" role="status" aria-live="polite">
-              <span>Tip</span> Use the menu on the left to explore Haqiq.
+              <section class="demo-panel" data-demo-panel="courses">
+                <div class="preview-heading">
+                  <div><small>Course management</small><strong>Courses</strong></div>
+                  <button class="demo-action" type="button" data-demo-message="Course creation is available to tenant administrators.">+ New course</button>
+                </div>
+                <div class="demo-table">
+                  <div class="demo-table-head"><span>Course</span><span>Status</span><span>Completion</span><span></span></div>
+                  <div class="demo-table-row"><span><b>Information Security</b><small>Version 2.1 · 86 learners</small></span><span class="mini-badge green">Published</span><span>88%</span><button type="button" data-demo-message="Information Security · 8 lessons · Final assessment · 80% passing score">Open</button></div>
+                  <div class="demo-table-row"><span><b>Workplace Safety</b><small>Version 1.4 · 112 learners</small></span><span class="mini-badge green">Published</span><span>94%</span><button type="button" data-demo-message="Workplace Safety · 6 lessons · Certificate enabled">Open</button></div>
+                  <div class="demo-table-row"><span><b>Data Privacy</b><small>Draft · not assigned</small></span><span class="mini-badge">Draft</span><span>—</span><button type="button" data-demo-message="Data Privacy is still in draft and can be edited before publishing.">Edit</button></div>
+                </div>
+              </section>
+
+              <section class="demo-panel" data-demo-panel="users">
+                <div class="preview-heading">
+                  <div><small>People</small><strong>Users</strong></div>
+                  <button class="demo-action" type="button" data-demo-message="Admins can invite or add employees and assign them to training.">+ Add user</button>
+                </div>
+                <div class="demo-table">
+                  <div class="demo-table-head"><span>Employee</span><span>Department</span><span>Status</span><span></span></div>
+                  <div class="demo-table-row"><span><b>Sarah Malik</b><small>sarah@acme.example</small></span><span>Operations</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Sarah Malik · 4 assigned courses · 4 completed · 4 certificates">View</button></div>
+                  <div class="demo-table-row"><span><b>Omar Hassan</b><small>omar@acme.example</small></span><span>Finance</span><span class="mini-badge green">Active</span><button type="button" data-demo-message="Omar Hassan · 3 assigned courses · 2 completed · 1 in progress">View</button></div>
+                  <div class="demo-table-row"><span><b>Lina George</b><small>lina@acme.example</small></span><span>HR</span><span class="mini-badge amber">Pending</span><button type="button" data-demo-message="Lina George has been invited and has not yet activated her account.">View</button></div>
+                </div>
+              </section>
+
+              <section class="demo-panel" data-demo-panel="certificates">
+                <div class="preview-heading">
+                  <div><small>Credentials</small><strong>Certificates</strong></div>
+                  <span class="status-pill">184 issued</span>
+                </div>
+                <div class="demo-table">
+                  <div class="demo-table-head"><span>Employee</span><span>Course</span><span>Status</span><span></span></div>
+                  <div class="demo-table-row"><span><b>Sarah Malik</b><small>HQ-26-0184</small></span><span>Information Security</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0184 · Score 94% · Valid credential">View</button></div>
+                  <div class="demo-table-row"><span><b>Omar Hassan</b><small>HQ-26-0172</small></span><span>Workplace Safety</span><span class="mini-badge green">Valid</span><button type="button" data-demo-message="Certificate HQ-26-0172 · Score 88% · Valid credential">View</button></div>
+                  <div class="demo-table-row"><span><b>Maya Chen</b><small>HQ-26-0149</small></span><span>Code of Conduct</span><span class="mini-badge">Expired</span><button type="button" data-demo-message="Certificate HQ-26-0149 has expired and can be reassigned for renewal.">View</button></div>
+                </div>
+              </section>
+
+              <section class="demo-panel" data-demo-panel="reports">
+                <div class="preview-heading">
+                  <div><small>Reporting</small><strong>Compliance report</strong></div>
+                  <div class="demo-segment" aria-label="Report views">
+                    <button class="active" type="button" data-report="compliance">Compliance</button>
+                    <button type="button" data-report="attempts">Attempts</button>
+                    <button type="button" data-report="audit">Audit</button>
+                  </div>
+                </div>
+                <div class="report-card">
+                  <div class="report-number" id="demo-report-number">91%</div>
+                  <div><strong id="demo-report-title">Overall completion</strong><p id="demo-report-copy">226 of 248 assigned training records are complete.</p></div>
+                </div>
+                <div class="report-bars">
+                  <div><span>Operations</span><div class="bar"><i style="width:96%"></i></div><b>96%</b></div>
+                  <div><span>Finance</span><div class="bar"><i style="width:89%"></i></div><b>89%</b></div>
+                  <div><span>Human Resources</span><div class="bar"><i style="width:93%"></i></div><b>93%</b></div>
+                </div>
+              </section>
+
+              <div class="demo-feedback" id="demo-feedback" role="status" aria-live="polite">
+                <span>Tip</span> Use the menu on the left to explore Haqiq.
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section shell" id="platform">
-      <div class="section-intro">
-        <p class="kicker">The platform</p>
-        <h2>Everything needed to run compliance training without the clutter.</h2>
-        <p>Built around the core jobs an administrator and learner need to complete.</p>
+    <section class="section shell" id="roles">
+      <div class="section-intro centered roles-heading">
+        <p class="kicker">Built for every role</p>
+        <h2>One system. Different jobs to get done.</h2>
       </div>
-      <div class="feature-grid">
-        <article class="feature"><div class="feature-num">01</div><h3>Create</h3><p>Build structured courses with lessons, media, supporting documents, and clear learning objectives.</p></article>
-        <article class="feature"><div class="feature-num">02</div><h3>Assign</h3><p>Assign training to employees and organize users by role, department, and status.</p></article>
-        <article class="feature"><div class="feature-num">03</div><h3>Assess</h3><p>Use final assessments, passing scores, attempt limits, and completion rules to verify understanding.</p></article>
-        <article class="feature"><div class="feature-num">04</div><h3>Certify</h3><p>Issue traceable certificates after successful completion and keep credential status visible.</p></article>
-        <article class="feature"><div class="feature-num">05</div><h3>Track</h3><p>See progress, attempts, completions, course activity, and learning records from one admin view.</p></article>
-        <article class="feature"><div class="feature-num">06</div><h3>Report</h3><p>Turn training activity into clear compliance evidence for internal review and operational follow-up.</p></article>
-      </div>
-    </section>
 
-    <section class="section contrast" id="workflow">
-      <div class="shell workflow-wrap">
-        <div class="section-intro light">
-          <p class="kicker">How it works</p>
-          <h2>From assignment to evidence in four steps.</h2>
-        </div>
-        <div class="steps">
-          <div class="step"><span>1</span><div><h3>Publish training</h3><p>Create a course, lessons, and the final assessment.</p></div></div>
-          <div class="step"><span>2</span><div><h3>Assign employees</h3><p>Give the right people access to the required training.</p></div></div>
-          <div class="step"><span>3</span><div><h3>Complete & assess</h3><p>Learners work through content and complete the required assessment.</p></div></div>
-          <div class="step"><span>4</span><div><h3>Record & certify</h3><p>Haqiq keeps the completion record and issues eligible certificates.</p></div></div>
-        </div>
+      <div class="role-tabs" role="tablist" aria-label="Haqiq roles">
+        <button class="active" type="button" role="tab" aria-selected="true" data-role-tab="admin">Administrators</button>
+        <button type="button" role="tab" aria-selected="false" data-role-tab="learner">Learners</button>
+        <button type="button" role="tab" aria-selected="false" data-role-tab="management">Management</button>
       </div>
-    </section>
 
-    <section class="section shell">
-      <div class="split">
-        <div>
-          <p class="kicker">For administrators</p>
-          <h2>A clear operating view of your training program.</h2>
+      <div class="role-stage">
+        <div class="role-copy">
+          <p class="role-eyebrow" id="role-eyebrow">For administrators</p>
+          <h3 id="role-title">Run training without chasing spreadsheets.</h3>
+          <p id="role-copy">Create courses, assign employees, follow progress, review attempts, issue certificates, and keep operational records in one place.</p>
+          <div class="role-points" id="role-points">
+            <span>Course & lesson management</span>
+            <span>Assignments & employee status</span>
+            <span>Assessment and certificate controls</span>
+          </div>
         </div>
-        <div class="check-list">
-          <div><span>✓</span> Course and lesson management</div>
-          <div><span>✓</span> Employee assignment and status tracking</div>
-          <div><span>✓</span> Assessment attempts and scores</div>
-          <div><span>✓</span> Certificate issuance and verification</div>
-          <div><span>✓</span> Compliance reports and audit activity</div>
+        <div class="role-visual">
+          <div class="role-window">
+            <div class="role-window-top"><span></span><span></span><span></span><b id="role-window-label">Admin workspace</b></div>
+            <div class="role-window-body" id="role-window-body">
+              <div class="role-mini-card"><small>Completion</small><strong>91%</strong><i style="width:91%"></i></div>
+              <div class="role-mini-row"><span>Information Security</span><b>88%</b></div>
+              <div class="role-mini-row"><span>Workplace Safety</span><b>94%</b></div>
+              <div class="role-mini-row"><span>Code of Conduct</span><b>98%</b></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="cta shell">
-      <div>
-        <p class="kicker">Haqiq MVP</p>
-        <h2>Make compliance training easier to run and easier to prove.</h2>
-        <p>We are preparing early access for organizations that want a simpler way to manage employee training and compliance records.</p>
+    <section class="section value-section">
+      <div class="shell value-grid">
+        <div class="value-lead">
+          <p class="kicker">Why Haqiq</p>
+          <h2>Proof without the enterprise bloat.</h2>
+          <p>Designed for organizations that need serious training records, but do not need a giant HR suite to get them.</p>
+        </div>
+        <div class="value-cards">
+          <article><span>01</span><h3>Unlimited learners</h3><p>Keep pricing focused on the organization and storage instead of charging for every employee seat.</p></article>
+          <article><span>02</span><h3>Assessment built in</h3><p>Passing scores, attempts, and course completion rules make learning measurable.</p></article>
+          <article><span>03</span><h3>Certificates with context</h3><p>Completion records and certificates stay connected to the learner, course, and assessment.</p></article>
+          <article><span>04</span><h3>Audit-friendly records</h3><p>Give administrators and management a clearer trail of what was assigned, completed, and certified.</p></article>
+        </div>
       </div>
-      <a class="button primary light-button" href="mailto:hello@haqiq.app?subject=Haqiq%20MVP%20Access">Request access</a>
+    </section>
+
+    <section class="final-cta shell">
+      <div class="final-cta-copy">
+        <p class="kicker">7-day trial</p>
+        <h2>Compliance should be simple to run — and simple to prove.</h2>
+        <p>Request a Haqiq workspace for your organization. During the MVP, trial requests are manually reviewed before activation.</p>
+      </div>
+      <div class="final-cta-actions">
+        <button class="button light-button" type="button" data-trial-open>Start your free trial</button>
+        <a href="#product">Explore the demo first →</a>
+      </div>
     </section>
   </main>
 
@@ -208,7 +279,7 @@
     <div class="footer-inner shell">
       <div>
         <div class="wordmark footer-mark">HAQIQ</div>
-        <p>Learning and compliance, simplified.</p>
+        <p>Compliance training that proves itself.</p>
       </div>
       <div class="footer-links">
         <a href="mailto:hello@haqiq.app">hello@haqiq.app</a>
@@ -218,6 +289,27 @@
       <div class="copyright">© 2026 Haqiq</div>
     </div>
   </footer>
+
+  <dialog class="trial-dialog" id="trial-dialog">
+    <form class="trial-card" id="trial-form">
+      <button class="trial-close" type="button" data-trial-close aria-label="Close trial request">×</button>
+      <p class="kicker">7-day free trial</p>
+      <h2>Request your Haqiq workspace.</h2>
+      <p class="trial-intro">Tell us who you are. During the MVP, each request is reviewed before a workspace is activated.</p>
+      <div class="form-grid">
+        <label>Company name<input name="company" required autocomplete="organization" placeholder="Acme Trading" /></label>
+        <label>Your name<input name="name" required autocomplete="name" placeholder="Ahmed Mansoor" /></label>
+        <label>Work email<input name="email" required type="email" autocomplete="email" placeholder="ahmed@company.com" /></label>
+        <label>Country<input name="country" required autocomplete="country-name" placeholder="United Arab Emirates" /></label>
+      </div>
+      <div class="trial-actions">
+        <button class="button primary" type="submit">Request trial</button>
+        <button class="button secondary" type="button" data-trial-close>Cancel</button>
+      </div>
+      <small class="trial-note">No card required. Submission currently opens a pre-filled email to Haqiq while the automated signup backend is being prepared.</small>
+    </form>
+  </dialog>
+
   <script src="script.js"></script>
 </body>
 </html>
