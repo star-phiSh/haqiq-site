@@ -1,4 +1,77 @@
 (() => {
+  document.documentElement.classList.add('js');
+
+  function initScrollStorytelling() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const selectors = [
+      '.section-intro',
+      '.product-view-tabs',
+      '.product-preview',
+      '.role-tabs',
+      '.role-stage',
+      '.value-lead',
+      '.value-cards article',
+      '.final-cta',
+      '.site-footer .footer-inner'
+    ];
+
+    selectors.forEach((selector) => {
+      document.querySelectorAll(selector).forEach((el, index) => {
+        el.classList.add('reveal-on-scroll');
+        if (selector === '.product-preview' || selector === '.role-stage' || selector === '.final-cta') {
+          el.classList.add('reveal-scale');
+        }
+        if (selector === '.value-cards article') {
+          el.classList.add('reveal-delay-' + ((index % 4) + 1));
+        }
+      });
+    });
+
+    document.querySelectorAll('.compliance-loop .loop-node').forEach((el, index) => {
+      el.classList.add('reveal-on-scroll', 'reveal-delay-' + ((index % 4) + 1));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+
+    const proofCard = document.querySelector('.hero-proof-card');
+    const signal = document.querySelector('.signal-strip');
+    let ticking = false;
+
+    const update = () => {
+      const y = window.scrollY || 0;
+      if (proofCard) {
+        const shift = Math.max(-18, Math.min(0, y * -0.035));
+        proofCard.style.transform = 'translate3d(0,' + shift + 'px,0)';
+      }
+      if (signal) {
+        const rect = signal.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+        signal.style.setProperty('--signal-progress', progress.toFixed(3));
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
+  initScrollStorytelling();
   const staticAr = {
     'Tenant Admin':'مسؤول المنشأة',
     'Learner':'المتعلم',
