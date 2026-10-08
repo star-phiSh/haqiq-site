@@ -114,6 +114,7 @@
     'Why Haqiq':'لماذا حقيق',
     'Proof without the enterprise bloat.':'إثبات واضح بدون تعقيد الأنظمة الضخمة.',
     'Designed for organizations that need serious training records, but do not need a giant HR suite to get them.':'مصمم للمنظمات التي تحتاج سجلات تدريب جادة دون الحاجة إلى نظام موارد بشرية ضخم.',
+    'Keep pricing focused on the organization and storage instead of charging for every employee seat.':'اجعل التسعير مرتبطاً بالمنظمة ومساحة التخزين بدلاً من فرض رسوم على كل موظف.',
     'Assessment built in':'التقييم مدمج',
     'Passing scores, attempts, and course completion rules make learning measurable.':'درجات النجاح والمحاولات وقواعد إكمال الدورات تجعل التعلّم قابلاً للقياس.',
     'Certificates with context':'شهادات مرتبطة بالسياق',
@@ -256,7 +257,8 @@
     translateStatic(currentLang);
     renderRole();
     refreshTheme();
-    const page=document.body.classList.contains('home')?'home':(document.querySelector('h1')?.textContent.includes('خصوصية')||document.title.includes('Privacy')?'privacy':'support');
+    const path=window.location.pathname.toLowerCase();
+    const page=document.body.classList.contains('home')?'home':(path.includes('/privacy')?'privacy':'support');
     document.title=currentLang==='ar'
       ? (page==='home'?'حقيق — تدريب امتثال يثبت نفسه':page==='privacy'?'حقيق — سياسة الخصوصية':'حقيق — الدعم')
       : (page==='home'?'Haqiq — Compliance training that proves itself':page==='privacy'?'Haqiq Privacy Policy':'Haqiq Support');
@@ -277,7 +279,9 @@
   navButtons.forEach((b)=>b.addEventListener('click',()=>showTab(b.dataset.demoTab)));
 
   document.querySelectorAll('[data-demo-message]').forEach((button)=>button.addEventListener('click',()=>{
-    if(feedback) feedback.innerHTML='<span>'+(currentLang==='ar'?'عرض':'Demo')+'</span> '+button.dataset.demoMessage;
+    if(feedback) feedback.innerHTML=currentLang==='ar'
+      ? '<span>عرض</span> هذه وظيفة تجريبية ضمن العرض التفاعلي لحقيق.'
+      : '<span>Demo</span> '+button.dataset.demoMessage;
   }));
 
   const reports={
