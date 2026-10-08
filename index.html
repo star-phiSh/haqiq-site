@@ -6,6 +6,13 @@
   <meta name="description" content="Haqiq is a focused learning and compliance platform for assigning training, assessing knowledge, issuing certificates, and tracking completion." />
   <title>Haqiq — Learning & Compliance</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (() => {
+      const saved = localStorage.getItem('haqiq-theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
 </head>
 <body class="home">
   <header class="site-header">
@@ -14,6 +21,7 @@
       <a href="#platform">Platform</a>
       <a href="#workflow">How it works</a>
       <a href="./support/">Support</a>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button>
       <a class="nav-cta" href="mailto:hello@haqiq.app?subject=Haqiq%20MVP%20Access">Request access</a>
     </nav>
   </header>

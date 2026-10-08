@@ -1,4 +1,30 @@
 (() => {
+  function initThemeToggle() {
+    const buttons = [...document.querySelectorAll('.theme-toggle')];
+    if (!buttons.length) return;
+
+    const applyTheme = (theme, persist = true) => {
+      document.documentElement.dataset.theme = theme;
+      if (persist) localStorage.setItem('haqiq-theme', theme);
+      const isDark = theme === 'dark';
+      buttons.forEach((button) => {
+        const icon = button.querySelector('.theme-icon');
+        if (icon) icon.textContent = isDark ? '☀' : '☾';
+        button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        button.setAttribute('aria-pressed', String(isDark));
+      });
+    };
+
+    applyTheme(document.documentElement.dataset.theme || 'light', false);
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+      });
+    });
+  }
+
+  initThemeToggle();
   const navButtons = [...document.querySelectorAll('[data-demo-tab]')];
   const panels = [...document.querySelectorAll('[data-demo-panel]')];
   const feedback = document.getElementById('demo-feedback');

@@ -432,3 +432,159 @@ body:not(.home) footer { margin-top: 80px; padding-top: 24px; border-top: 1px so
   .demo-panel .preview-heading { flex-direction: column; }
   .report-bars > div { grid-template-columns: 100px 1fr 34px; }
 }
+
+
+/* Theme toggle */
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--ink);
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  flex: 0 0 auto;
+  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease;
+}
+.theme-toggle:hover {
+  background: var(--accent-soft);
+  border-color: var(--line-strong);
+  color: var(--accent);
+}
+.theme-toggle:active { transform: translateY(1px); }
+.theme-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+.page-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+body:not(.home) .page-topline .brand { margin-bottom: 0; }
+
+/* Dark mode */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #EDF4F0;
+  --muted: #B8C6BF;
+  --muted-2: #93A49B;
+  --line: #263B33;
+  --line-strong: #49665B;
+  --soft: #10231D;
+  --panel: #0B1713;
+  --accent: #4FB49F;
+  --accent-hover: #72C7B5;
+  --accent-soft: #12352C;
+  --success: #4FB49F;
+}
+:root[data-theme="dark"] body {
+  background: var(--panel);
+  color: var(--ink);
+}
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] body:not(.home) footer {
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .wordmark,
+:root[data-theme="dark"] .nav a,
+:root[data-theme="dark"] body:not(.home) a {
+  color: var(--ink);
+}
+:root[data-theme="dark"] .nav a:hover,
+:root[data-theme="dark"] body:not(.home) a:hover {
+  color: var(--accent);
+}
+:root[data-theme="dark"] .nav-cta,
+:root[data-theme="dark"] .primary {
+  background: #176B5B;
+  color: #fff !important;
+}
+:root[data-theme="dark"] .nav-cta:hover,
+:root[data-theme="dark"] .primary:hover {
+  background: #105747;
+  color: #fff !important;
+}
+:root[data-theme="dark"] .eyebrow,
+:root[data-theme="dark"] .secondary,
+:root[data-theme="dark"] .product-preview,
+:root[data-theme="dark"] .preview-content,
+:root[data-theme="dark"] .metric,
+:root[data-theme="dark"] .activity-card,
+:root[data-theme="dark"] .feature,
+:root[data-theme="dark"] .demo-action,
+:root[data-theme="dark"] .demo-table,
+:root[data-theme="dark"] .report-card,
+:root[data-theme="dark"] .report-bars,
+:root[data-theme="dark"] .demo-segment button.active {
+  background: var(--panel);
+  border-color: var(--line);
+  color: var(--ink);
+}
+:root[data-theme="dark"] .preview-topbar,
+:root[data-theme="dark"] .preview-sidebar,
+:root[data-theme="dark"] .demo-table-head,
+:root[data-theme="dark"] .demo-feedback,
+:root[data-theme="dark"] .demo-segment {
+  background: var(--soft);
+}
+:root[data-theme="dark"] .preview-sidebar .active,
+:root[data-theme="dark"] .demo-nav button.active {
+  background: #176B5B;
+  color: #fff;
+}
+:root[data-theme="dark"] .demo-nav button:hover,
+:root[data-theme="dark"] .demo-table-row > button,
+:root[data-theme="dark"] .status-pill,
+:root[data-theme="dark"] .mini-badge.green {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+:root[data-theme="dark"] .demo-table-row > button:hover {
+  background: var(--accent);
+  color: #08120F;
+}
+:root[data-theme="dark"] .bar {
+  background: #193129;
+}
+:root[data-theme="dark"] .bar i {
+  background: var(--accent);
+}
+:root[data-theme="dark"] .contrast {
+  background: #071510;
+}
+:root[data-theme="dark"] .cta {
+  background: #176B5B;
+}
+:root[data-theme="dark"] .cta .kicker,
+:root[data-theme="dark"] .cta p:last-child {
+  color: #DDE5E0;
+}
+:root[data-theme="dark"] .light-button {
+  background: #fff;
+  color: #182F27 !important;
+}
+:root[data-theme="dark"] .light-button:hover {
+  background: #EDF4F0;
+}
+:root[data-theme="dark"] .product-preview {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .32);
+}
+:root[data-theme="dark"] .mini-badge:not(.green):not(.amber) {
+  background: #172A23;
+  color: var(--muted);
+}
+:root[data-theme="dark"] .mini-badge.amber {
+  background: #382D16;
+  color: #F1D99C;
+}
+
+@media (max-width: 620px) {
+  .theme-toggle { width: 36px; height: 36px; }
+}

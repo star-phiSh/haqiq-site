@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haqiq Support</title>
   <link rel="stylesheet" href="../styles.css" />
+  <script>
+    (() => {
+      const saved = localStorage.getItem('haqiq-theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
 </head>
 <body>
   <main class="container">
-    <div class="brand">HAQIQ</div>
+    <div class="page-topline"><div class="brand">HAQIQ</div><button class="theme-toggle page-theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button></div>
     <h1>Support</h1>
     <p class="lead">Need help using Haqiq? We can assist with account access, assigned courses, assessments, certificates, and other application questions.</p>
 
@@ -25,5 +32,6 @@
     <p><a href="../">← Back to Haqiq</a></p>
     <footer>© 2026 Haqiq</footer>
   </main>
+  <script src="../script.js"></script>
 </body>
 </html>

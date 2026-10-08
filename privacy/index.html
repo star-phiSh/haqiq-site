@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haqiq Privacy Policy</title>
   <link rel="stylesheet" href="../styles.css" />
+  <script>
+    (() => {
+      const saved = localStorage.getItem('haqiq-theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
 </head>
 <body>
   <main class="container">
-    <div class="brand">HAQIQ</div>
+    <div class="page-topline"><div class="brand">HAQIQ</div><button class="theme-toggle page-theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span class="theme-icon" aria-hidden="true">☾</span></button></div>
     <h1>Privacy Policy</h1>
     <p>Last updated: October 7, 2026</p>
     <p>Haqiq is a learning and compliance platform designed to help organizations provide training, assessments, completion records, and certificates to their employees and users.</p>
@@ -46,5 +53,6 @@
     <p><a href="../">← Back to Haqiq</a></p>
     <footer>© 2026 Haqiq</footer>
   </main>
+  <script src="../script.js"></script>
 </body>
 </html>
