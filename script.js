@@ -112,8 +112,8 @@
 
       const dockOffsets = [0, 44, 112, 70, 132, 88];
       const dock = dockOffsets[nearestIndex] || 0;
-      const swing = Math.sin(progress * Math.PI * 4.2) * 3.2;
-      const drift = Math.sin(progress * Math.PI * 2.2) * 6;
+      const swing = Math.sin(progress * Math.PI * 5.2) * 7;
+      const drift = Math.sin(progress * Math.PI * 2.4) * 10;
       const y = dock + drift;
 
       companion.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) rotate(' + swing.toFixed(2) + 'deg)';
@@ -133,43 +133,6 @@
   }
 
   initBrandCompanion();
-
-  function initEvidenceGridMotion() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const hero = document.querySelector('.hero');
-    const product = document.querySelector('.product-section');
-    const productIntro = document.querySelector('.product-intro');
-    if (!hero && !product) return;
-
-    let ticking = false;
-    const update = () => {
-      const y = window.scrollY || 0;
-      const shift = Math.max(-90, Math.min(90, y * .045));
-      if (hero) hero.style.setProperty('--evidence-shift', shift.toFixed(2));
-      if (product) {
-        const rect = product.getBoundingClientRect();
-        const local = Math.max(-110, Math.min(110, -rect.top * .04));
-        product.style.setProperty('--evidence-shift', local.toFixed(2));
-        const viewport = window.innerHeight || 1;
-        const progress = Math.max(.18, Math.min(1, (viewport - rect.top) / (viewport * .9)));
-        if (productIntro) productIntro.style.setProperty('--product-line', progress.toFixed(3));
-      }
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-  }
-
-  initEvidenceGridMotion();
   const staticAr = {
     'Tenant Admin':'مسؤول المنشأة',
     'Learner':'المتعلم',
