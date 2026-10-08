@@ -228,7 +228,8 @@
     }
   };
 
-  let currentLang = document.documentElement.dataset.lang || 'en';
+  const routeIsArabic = window.location.pathname === '/ar' || window.location.pathname.startsWith('/ar/');
+  let currentLang = routeIsArabic ? 'ar' : 'en';
   let activeRole = 'admin';
   let refreshTheme = () => {};
 
@@ -247,7 +248,7 @@
     document.documentElement.dataset.lang=currentLang;
     document.documentElement.lang=currentLang;
     document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';
-    if (persist) localStorage.setItem('haqiq-lang', currentLang);
+    // Language is represented by the URL (/ for English, /ar/ for Arabic).
     document.querySelectorAll('[data-lang]').forEach((b)=>b.classList.toggle('active',b.dataset.lang===currentLang));
     document.querySelectorAll('.lang-logo').forEach((img)=>{
       img.src=currentLang==='ar'?img.dataset.logoAr:img.dataset.logoEn;
@@ -264,8 +265,26 @@
       : (page==='home'?'Haqiq — Compliance training that proves itself':page==='privacy'?'Haqiq Privacy Policy':'Haqiq Support');
   };
 
+  const languageUrl = (lang) => {
+    const path = window.location.pathname;
+    let target;
+    if (lang === 'ar') {
+      if (path === '/ar' || path.startsWith('/ar/')) return path + window.location.search + window.location.hash;
+      target = path === '/' ? '/ar/' : '/ar' + path;
+    } else {
+      if (!(path === '/ar' || path.startsWith('/ar/'))) return path + window.location.search + window.location.hash;
+      target = path.replace(/^\/ar(?=\/|$)/, '') || '/';
+    }
+    return target + window.location.search + window.location.hash;
+  };
+
   refreshTheme=initThemeToggle();
-  document.querySelectorAll('[data-lang]').forEach((button)=>button.addEventListener('click',()=>applyLanguage(button.dataset.lang)));
+  document.querySelectorAll('[data-lang]').forEach((button)=>button.addEventListener('click',()=>{
+    const destination = languageUrl(button.dataset.lang);
+    if (destination !== window.location.pathname + window.location.search + window.location.hash) {
+      window.location.href = destination;
+    }
+  }));
   applyLanguage(currentLang,false);
 
   const navButtons=[...document.querySelectorAll('[data-demo-tab]')];
