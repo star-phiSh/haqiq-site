@@ -72,6 +72,67 @@
   }
 
   initScrollStorytelling();
+
+  function initBrandCompanion() {
+    const companion = document.querySelector('.brand-companion');
+    if (!companion || window.matchMedia('(max-width: 1320px)').matches) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      companion.classList.add('is-ready');
+      return;
+    }
+
+    const sections = [
+      document.querySelector('.hero'),
+      document.querySelector('#loop'),
+      document.querySelector('#product'),
+      document.querySelector('#roles'),
+      document.querySelector('.value-section'),
+      document.querySelector('.final-cta')
+    ].filter(Boolean);
+
+    let ticking = false;
+
+    const update = () => {
+      const viewport = window.innerHeight || 1;
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - viewport);
+      const progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+
+      let nearestIndex = 0;
+      let nearestDistance = Infinity;
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const distance = Math.abs(center - viewport * .48);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      const dockOffsets = [0, 44, 112, 70, 132, 88];
+      const dock = dockOffsets[nearestIndex] || 0;
+      const swing = Math.sin(progress * Math.PI * 5.2) * 7;
+      const drift = Math.sin(progress * Math.PI * 2.4) * 10;
+      const y = dock + drift;
+
+      companion.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) rotate(' + swing.toFixed(2) + 'deg)';
+      companion.classList.add('is-ready');
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
+  initBrandCompanion();
   const staticAr = {
     'Tenant Admin':'مسؤول المنشأة',
     'Learner':'المتعلم',
