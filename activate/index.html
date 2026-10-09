@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Activate your Haqiq trial</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/webp" href="../assets/haqiq-mark.webp" />
+</head>
+<body>
+  <main class="shell" style="min-height:100vh;display:grid;place-items:center;padding:40px 20px">
+    <section class="trial-card" style="max-width:620px;width:100%;margin:0">
+      <img class="trial-logo" src="../assets/haqiq-logo-en.webp" alt="Haqiq" />
+      <p class="kicker">Workspace approved</p>
+      <h1 style="font-size:2rem;margin:.5rem 0 1rem">Activate your 7-day trial.</h1>
+      <p class="trial-intro" id="activation-copy">Checking your activation link…</p>
+      <form id="activation-form" hidden>
+        <div id="password-fields" class="form-grid" hidden>
+          <label>Create password<input name="password" type="password" minlength="12" maxlength="128" autocomplete="new-password" /></label>
+          <label>Confirm password<input name="confirm" type="password" minlength="12" maxlength="128" autocomplete="new-password" /></label>
+        </div>
+        <div class="trial-actions">
+          <button class="button primary" type="submit" id="activate-button">Activate trial</button>
+        </div>
+      </form>
+      <div class="trial-status" id="activation-status" role="status" aria-live="polite"></div>
+      <div class="trial-actions" id="success-actions" hidden>
+        <a class="button primary" id="open-haqiq" href="../">Open Haqiq</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    (async()=>{
+      const API='https://bdnjsszeprhztgjlfrdh.supabase.co/functions/v1/activate-trial';
+      const token=new URLSearchParams(location.search).get('token')||'';
+      const copy=document.getElementById('activation-copy');
+      const status=document.getElementById('activation-status');
+      const form=document.getElementById('activation-form');
+      const fields=document.getElementById('password-fields');
+      const button=document.getElementById('activate-button');
+      let requiresPassword=false;
+      async function call(body){
+        const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+        const data=await response.json().catch(()=>({}));
+        if(!response.ok) throw new Error(data.error||'Unable to activate this trial.');
+        return data;
+      }
+      if(!token){copy.textContent='This activation link is invalid or expired.';status.className='trial-status error';return;}
+      try{
+        const info=await call({action:'inspect',token});
+        requiresPassword=info.requires_password===true;
+        copy.textContent=(info.company_name||'Your workspace')+' is ready. '+(requiresPassword?'Create a password to activate your trial.':'Activate the workspace to start your trial.');
+        fields.hidden=!requiresPassword;
+        form.hidden=false;
+      }catch(error){
+        copy.textContent='We could not open this activation link.';
+        status.className='trial-status error';
+        status.textContent=error instanceof Error?error.message:'This activation link is invalid or expired.';
+        return;
+      }
+      form.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        status.textContent='';status.className='trial-status';
+        const data=new FormData(form);
+        const password=String(data.get('password')||'');
+        const confirm=String(data.get('confirm')||'');
+        if(requiresPassword&&password!==confirm){status.className='trial-status error';status.textContent='Passwords do not match.';return;}
+        button.disabled=true;button.textContent='Activating…';
+        try{
+          const result=await call({action:'activate',token,password:requiresPassword?password:undefined});
+          form.hidden=true;
+          copy.textContent='Your Haqiq trial is active.';
+          status.className='trial-status success';
+          const end=result.trial_ends_at?new Date(result.trial_ends_at).toLocaleString():'';
+          status.textContent='Your 7-day trial has started.'+(end?' It ends on '+end+'.':'');
+          const open=document.getElementById('open-haqiq');
+          open.href=result.login_url||'../';
+          document.getElementById('success-actions').hidden=false;
+          history.replaceState({},document.title,location.pathname);
+        }catch(error){
+          status.className='trial-status error';
+          status.textContent=error instanceof Error?error.message:'Unable to activate this trial.';
+        }finally{button.disabled=false;button.textContent='Activate trial';}
+      });
+    })();
+  </script>
+</body>
+</html>
