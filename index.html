@@ -422,12 +422,14 @@
         <label>Your name<input name="name" required autocomplete="name" placeholder="Ahmed Mansoor" /></label>
         <label>Work email<input name="email" required type="email" autocomplete="email" placeholder="ahmed@company.com" /></label>
         <label>Country<input name="country" required autocomplete="country-name" placeholder="United Arab Emirates" /></label>
+        <label class="trial-honeypot" aria-hidden="true" tabindex="-1">Website<input name="website" autocomplete="off" tabindex="-1" /></label>
       </div>
       <div class="trial-actions">
         <button class="button primary" type="submit">Request trial</button>
         <button class="button secondary" type="button" data-trial-close>Cancel</button>
       </div>
-      <small class="trial-note">No card required. Submission currently opens a pre-filled email to Haqiq while the automated signup backend is being prepared.</small>
+      <div class="trial-status" id="trial-status" role="status" aria-live="polite"></div>
+      <small class="trial-note">No card required. Verify your work email, then your request will be reviewed before activation.</small>
     </form>
   </dialog>
 
