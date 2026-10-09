@@ -959,3 +959,9 @@ html[dir="rtl"] .brand-companion {
     transition: none !important;
   }
 }
+
+
+.trial-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.trial-status{min-height:20px;font-size:.9rem;line-height:1.5;color:var(--muted);margin-top:2px}
+.trial-status.success{color:var(--brand)}
+.trial-status.error{color:#982C2C}
