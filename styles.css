@@ -1015,3 +1015,30 @@ html[lang="ar"] .hero h1, html[dir="rtl"] .hero h1 {
   letter-spacing: normal;
   line-height: 1.18;
 }
+
+
+/* Haqiq minimal editorial homepage */
+.brand-companion,.signal-strip,.hero-proof-card{display:none!important}
+.nav{font-weight:500}.nav-cta,.button{border-radius:5px;font-weight:600}
+.hero{padding:clamp(90px,13vw,180px) 0}
+.hero-copy-wrap{max-width:960px}
+.hero .eyebrow{border:0;background:none;padding:0;font-weight:500;letter-spacing:.02em}
+.hero h1{font-size:clamp(46px,6.4vw,88px);line-height:1.14;letter-spacing:-.043em;font-weight:600;max-width:980px;margin:30px 0 24px}
+.hero h1 em{display:inline;font-weight:600}
+.hero-copy{font-size:clamp(17px,1.9vw,21px);max-width:630px}
+.minimal-footnote{font-size:12px;color:var(--muted-2);margin-top:24px}
+.minimal-intro{padding:75px 0 95px;border-top:1px solid var(--line)}
+.minimal-intro h2{font-family:var(--font-display);font-size:clamp(34px,4vw,54px);font-weight:600;letter-spacing:-.035em;margin:12px 0}
+.minimal-intro>p:last-child{max-width:660px;color:var(--muted);font-size:17px;line-height:1.7}
+.section{padding:90px 0}.section h2,.final-cta h2{font-size:clamp(34px,4.6vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1.14}
+.section-intro>p:last-child{font-size:16px}.kicker{font-weight:600;letter-spacing:.06em}
+.product-section{background:var(--panel)}.product-preview{border-radius:8px;box-shadow:none}
+.capabilities-section{border-top:1px solid var(--line)}.capabilities-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:40px;border-top:1px solid var(--line)}
+.capability-card{border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;padding:32px 24px 34px 0;gap:10px;background:transparent!important}
+.capability-card:nth-child(even){padding-left:28px}
+.capability-number{font-weight:500}.capability-tag{background:none!important;padding:0;border-radius:0;font-weight:600}
+.capability-card h3{font-weight:600;font-size:21px}.capability-card p{max-width:450px;font-size:15px}
+.reveal-on-scroll{opacity:1!important;transform:none!important}
+@media(max-width:740px){.hero{padding:95px 0}.hero h1{font-size:clamp(42px,9vw,64px)}.minimal-intro{padding:58px 0}.capabilities-grid{grid-template-columns:1fr}.capability-card:nth-child(even){padding-left:0}}
+html[dir="rtl"] .minimal-intro h2,html[dir="rtl"] .hero h1{font-family:var(--font-arabic);letter-spacing:normal}
+html[dir="rtl"] .capability-card,html[dir="rtl"] .capability-card:nth-child(even){padding-right:0;padding-left:20px}
