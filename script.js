@@ -507,49 +507,4 @@
     renderRole();
   }));
 
-  const dialog=document.getElementById('trial-dialog');
-  document.querySelectorAll('[data-trial-open]').forEach((button)=>button.addEventListener('click',()=>{if(dialog&&typeof dialog.showModal==='function')dialog.showModal();}));
-  document.querySelectorAll('[data-trial-close]').forEach((button)=>button.addEventListener('click',()=>dialog&&dialog.close()));
-  if(dialog) dialog.addEventListener('click',(event)=>{if(event.target===dialog)dialog.close();});
-
-  const trialForm=document.getElementById('trial-form');
-  const trialStatus=document.getElementById('trial-status');
-  if(trialForm) trialForm.addEventListener('submit',async(event)=>{
-    event.preventDefault();
-    const submit=trialForm.querySelector('button[type="submit"]');
-    const form=new FormData(trialForm);
-    const payload={
-      company:String(form.get('company')||'').trim(),
-      name:String(form.get('name')||'').trim(),
-      email:String(form.get('email')||'').trim(),
-      country:String(form.get('country')||'').trim(),
-      website:String(form.get('website')||'').trim(),
-      locale:currentLang
-    };
-    if(submit){submit.disabled=true;submit.textContent=currentLang==='ar'?'جارٍ الإرسال…':'Submitting…';}
-    if(trialStatus){trialStatus.className='trial-status';trialStatus.textContent='';}
-    try{
-      const response=await fetch('https://bdnjsszeprhztgjlfrdh.supabase.co/functions/v1/request-trial',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(payload)
-      });
-      const data=await response.json().catch(()=>({}));
-      if(!response.ok) throw new Error(typeof data.error==='string'?data.error:(currentLang==='ar'?'تعذر إرسال الطلب حالياً.':'Unable to submit the trial request right now.'));
-      if(trialStatus){
-        trialStatus.classList.add('success');
-        trialStatus.textContent=currentLang==='ar'
-          ? 'تم استلام الطلب. تحقق من بريد العمل للمتابعة.'
-          : 'Request received. Check your work email to continue.';
-      }
-      trialForm.reset();
-    }catch(error){
-      if(trialStatus){
-        trialStatus.classList.add('error');
-        trialStatus.textContent=error instanceof Error?error.message:(currentLang==='ar'?'تعذر إرسال الطلب حالياً.':'Unable to submit the trial request right now.');
-      }
-    }finally{
-      if(submit){submit.disabled=false;submit.textContent=currentLang==='ar'?'طلب التجربة':'Request trial';}
-    }
-  });
 })();
