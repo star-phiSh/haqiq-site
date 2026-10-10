@@ -61,9 +61,10 @@ test('every live page loads versioned CSS and keeps routing/trial assets',()=>{
   assert.match(html,/id="trial-form"/,`trial form: ${page}`);
   assert.match(html,/data-lang="en"/,`English toggle: ${page}`);
   assert.match(html,/data-lang="ar"/,`Arabic toggle: ${page}`);
-  assert.match(html,/src="(?:\.\.\/)?trial\.js/,`trial JS: ${page}`);
+  assert.match(html,/src="(?:\.\.\/)?script\.js/,`website interactions: ${page}`);
  }
  const english=read('index.html'),arabic=read('ar/index.html');
+ assert.match(english,/src="trial\.js/, 'English homepage keeps automated trial verification flow');
  assert.match(english,/<html lang="en">/);
  assert.match(arabic,/<html lang="ar" dir="rtl">/);
  assert.match(css,/html\[dir="rtl"\]/,'RTL styles retained');
