@@ -1,0 +1,19 @@
+name: Website quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check script.js
+      - run: node --check trial.js
+      - run: node --test tests/*.test.mjs
