@@ -453,11 +453,32 @@
 
   const productViewButtons=[...document.querySelectorAll('[data-product-view-tab]')];
   const productViewPanels=[...document.querySelectorAll('[data-product-view-panel]')];
-  productViewButtons.forEach((button)=>button.addEventListener('click',()=>{
-    const view=button.dataset.productViewTab;
-    productViewButtons.forEach((b)=>{const on=b===button;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
-    productViewPanels.forEach((panel)=>panel.classList.toggle('active',panel.dataset.productViewPanel===view));
-  }));
+  function selectProductView(view) {
+    productViewButtons.forEach((button)=>{
+      const selected=button.dataset.productViewTab===view;
+      button.classList.toggle('active',selected);
+      button.setAttribute('aria-selected',String(selected));
+      button.tabIndex=selected?0:-1;
+    });
+    productViewPanels.forEach((panel)=>{
+      const selected=panel.dataset.productViewPanel===view;
+      panel.classList.toggle('active',selected);
+      panel.setAttribute('aria-hidden',String(!selected));
+    });
+  }
+  productViewButtons.forEach((button,index)=>{
+    button.addEventListener('click',()=>selectProductView(button.dataset.productViewTab));
+    button.addEventListener('keydown',(event)=>{
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+      event.preventDefault();
+      const step=(document.documentElement.dir==='rtl'?-1:1);
+      const next=event.key==='Home'?0:event.key==='End'?productViewButtons.length-1:
+        (index+(event.key==='ArrowRight'?step:-step)+productViewButtons.length)%productViewButtons.length;
+      selectProductView(productViewButtons[next].dataset.productViewTab);
+      productViewButtons[next].focus();
+    });
+  });
+  if(productViewButtons.length)selectProductView(productViewButtons.find((button)=>button.classList.contains('active'))?.dataset.productViewTab||'admin');
 
   const learnerNavButtons=[...document.querySelectorAll('[data-learner-tab]')];
   const learnerPanels=[...document.querySelectorAll('[data-learner-panel]')];
