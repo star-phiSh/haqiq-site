@@ -52,7 +52,8 @@ test('light and dark themes remain neutral and dark text is legible',()=>{
 test('every live page loads versioned CSS and keeps routing/trial assets',()=>{
  for(const page of pages){
   const html=read(page);
-  assert.match(html,/styles\.css\?v=20261010-monochrome/,`asset cache update: ${page}`);
+  const expectedVersion = ['index.html','ar/index.html'].includes(page) ? '20261019-product-preview' : '20261010-monochrome';
+  assert.ok(html.includes('styles.css?v=' + expectedVersion), 'asset cache update: ' + page);
   assert.match(html,/<meta name="viewport"/,`mobile support: ${page}`);
  }
  for (const page of ['index.html','ar/index.html']){
@@ -80,4 +81,24 @@ test('premium white is the default but user-selected dark mode still works',()=>
  const script=read('script.js');
  assert.match(script,/applyTheme\(/,'working theme toggle preserved');
  assert.match(script,/localStorage\.setItem\('haqiq-theme'/,'theme changes remain user-controlled');
+});
+
+test('homepage role previews are present in both languages and are interactive',()=>{
+ const script=read('script.js');
+ for(const page of ['index.html','ar/index.html']){
+  const html=read(page);
+  assert.match(html,/id="product" aria-labelledby="product-preview-title"/,'preview area: '+page);
+  for(const role of ['admin','learner']) {
+   assert.ok(html.includes('data-product-view-tab="'+role+'"'),'role tab '+role+' in '+page);
+   assert.ok(html.includes('data-product-view-panel="'+role+'"'),'role panel '+role+' in '+page);
+  }
+  for(const nav of ['overview','courses','users','certificates','reports']) assert.ok(html.includes('data-demo-tab="'+nav+'"'),'admin '+nav+' in '+page);
+  for(const nav of ['learning','certificates','profile']) assert.ok(html.includes('data-learner-tab="'+nav+'"'),'learner '+nav+' in '+page);
+  assert.ok(html.includes('script.js?v=20261019-interactive-preview'),'script cache refreshed: '+page);
+  assert.ok(!html.includes('Live records'),'fake metrics not labeled live: '+page);
+ }
+ assert.ok(script.includes('function selectProductView(view)'),'working role switch');
+ assert.ok(script.includes("'ArrowRight'"),'keyboard role navigation');
+ assert.ok(css.includes('.product-section .product-intro'),'centered product tour');
+ assert.ok(css.includes('html[dir="rtl"] .product-section'),'RTL support');
 });
