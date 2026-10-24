@@ -5,8 +5,51 @@
   const form=document.getElementById('trial-form');
   const status=document.getElementById('trial-status');
   const countrySelect=document.querySelector('[data-country-select]');
+  const companyField=form?.querySelector('input[name="company"]');
+  const workspaceField=form?.querySelector('input[name="requested_slug"]');
+  const workspaceMessage=document.getElementById('workspace-address-status');
+  let workspaceCustomized=false;
+  let checking=0;
+  let checkTimer=null;
 
   const locale=()=>document.documentElement.dataset.lang==='ar'||document.documentElement.lang==='ar'?'ar':'en';
+
+  const reserved=new Set('admin,api,app,assets,auth,billing,blog,cdn,certificate,certificates,dashboard,docs,event,events,help,haqiq,login,logout,mail,marketing,platform,register,signup,static,status,support,verify,www'.split(','));
+  const suggest=company=>String(company||'').normalize('NFKD').toLowerCase().replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40).replace(/-+$/,'');
+  const addressIssue=slug=>!(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)&&slug.length>=3&&slug.length<=40)
+    ?(locale()==='ar'?'استخدم 3–40 حرفاً إنجليزياً صغيراً أو رقماً أو شرطة.':'Use 3–40 lowercase letters, numbers or hyphens.')
+    :(reserved.has(slug)||slug.startsWith('xn--'))?(locale()==='ar'?'هذا العنوان محجوز.':'This workspace address is reserved.'):null;
+  const addressText=(message,ok)=>{if(!workspaceMessage)return;workspaceMessage.textContent=message;workspaceMessage.className='workspace-address-status'+(ok===true?' success':ok===false?' error':'');};
+  async function checkAddress(){
+    if(!workspaceField)return false;
+    const slug=workspaceField.value.trim();
+    const id=++checking;
+    const issue=addressIssue(slug);
+    if(issue){workspaceField.setCustomValidity(issue);addressText(issue,false);return false;}
+    workspaceField.setCustomValidity('');
+    addressText(locale()==='ar'?'جارٍ التحقق من العنوان…':'Checking address…');
+    try{
+      const response=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json','apikey':PUBLISHABLE_KEY},body:JSON.stringify({action:'check_workspace_slug',requested_slug:slug})});
+      const result=await response.json().catch(()=>({}));
+      if(id!==checking||slug!==workspaceField.value.trim())return false;
+      if(!response.ok||result.available!==true){
+        const message=result.available===false?(locale()==='ar'?'هذا العنوان غير متاح. اختر عنواناً آخر.':'That address is unavailable. Choose another.'):(locale()==='ar'?'تعذر التحقق الآن. حاول مرة أخرى.':'Cannot verify this address right now. Try again.');
+        workspaceField.setCustomValidity(message);addressText(message,false);return false;
+      }
+      workspaceField.setCustomValidity('');
+      addressText((locale()==='ar'?'متاح حالياً، ويُحجز بعد تأكيد البريد الإلكتروني.':'Available for now; reserved after email verification.'),true);
+      return true;
+    }catch{
+      if(id!==checking)return false;
+      const message=locale()==='ar'?'تعذر التحقق الآن. حاول مرة أخرى.':'Cannot verify this address right now. Try again.';
+      workspaceField.setCustomValidity(message);addressText(message,false);return false;
+    }
+  }
+  if(companyField&&workspaceField){
+    companyField.addEventListener('input',()=>{if(workspaceCustomized)return;workspaceField.value=suggest(companyField.value);clearTimeout(checkTimer);checkTimer=setTimeout(()=>void checkAddress(),400);});
+    workspaceField.addEventListener('input',()=>{workspaceCustomized=true;workspaceField.value=workspaceField.value.toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,40);workspaceField.setCustomValidity('');clearTimeout(checkTimer);checkTimer=setTimeout(()=>void checkAddress(),400);});
+    workspaceField.addEventListener('blur',()=>{clearTimeout(checkTimer);void checkAddress();});
+  }
 
   function populateCountries(){
     if(!countrySelect||countrySelect.options.length>1)return;
@@ -73,11 +116,14 @@
   form.addEventListener('submit',async(event)=>{
     event.preventDefault();
     if(!form.reportValidity())return;
+    clearTimeout(checkTimer);
+    if(!await checkAddress()){form.reportValidity();return;}
 
     const submit=form.querySelector('button[type="submit"]');
     const data=new FormData(form);
     const payload={
       company:String(data.get('company')||'').trim(),
+      requested_slug:String(data.get('requested_slug')||'').trim(),
       name:String(data.get('name')||'').trim(),
       email:String(data.get('email')||'').trim(),
       country:String(data.get('country')||'').trim(),
@@ -109,6 +155,8 @@
       }
 
       form.reset();
+      workspaceCustomized=false;
+      if(workspaceMessage)addressText('');
       populateCountries();
       if(status){
         status.className='trial-status success';
