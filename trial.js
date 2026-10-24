@@ -14,7 +14,7 @@
 
   const locale=()=>document.documentElement.dataset.lang==='ar'||document.documentElement.lang==='ar'?'ar':'en';
 
-  const reserved=new Set('admin,api,app,assets,auth,billing,blog,cdn,certificate,certificates,dashboard,docs,event,events,help,haqiq,login,logout,mail,marketing,platform,register,signup,static,status,support,verify,www'.split(','));
+  const reserved=new Set('eden,admin,api,app,assets,auth,billing,blog,cdn,certificate,certificates,dashboard,docs,event,events,help,haqiq,login,logout,mail,marketing,platform,register,signup,static,status,support,verify,www'.split(','));
   const suggest=company=>String(company||'').normalize('NFKD').toLowerCase().replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40).replace(/-+$/,'');
   const addressIssue=slug=>!(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)&&slug.length>=3&&slug.length<=40)
     ?(locale()==='ar'?'استخدم 3–40 حرفاً إنجليزياً صغيراً أو رقماً أو شرطة.':'Use 3–40 lowercase letters, numbers or hyphens.')
