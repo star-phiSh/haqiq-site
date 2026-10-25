@@ -305,6 +305,11 @@
       <p class="trial-intro">Tell us who you are. During the MVP, each request is reviewed before a workspace is activated.</p>
       <div class="form-grid">
         <label>Company name<input name="company" required autocomplete="organization" placeholder="Acme Trading" /></label>
+        <label class="workspace-address-field">Your workspace address
+          <span class="workspace-address-control"><input name="requested_slug" required minlength="3" maxlength="40" autocomplete="off" placeholder="eden" aria-describedby="workspace-address-status" /><span class="workspace-address-suffix">.haqiq.app</span></span>
+          <small>Choose a unique name for your team. It will be reserved after email verification and approval.</small>
+          <span id="workspace-address-status" class="workspace-address-status" role="status" aria-live="polite"></span>
+        </label>
         <label>Your name<input name="name" required autocomplete="name" placeholder="Ahmed Mansoor" /></label>
         <label>Work email<input name="email" required type="email" autocomplete="email" placeholder="ahmed@company.com" /></label>
         <label>Country<select name="country" required autocomplete="country-name" data-country-select>
@@ -322,6 +327,6 @@
   </dialog>
 
   <script src="script.js?v=20261019-interactive-preview"></script>
-  <script src="trial.js?v=20261009-2"></script>
+  <script src="trial.js?v=20261025-workspace-onboarding"></script>
 </body>
 </html>
